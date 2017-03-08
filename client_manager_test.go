@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/sideshow/apns2"
-	"github.com/sideshow/apns2/certificate"
+	"github.com/nanoscaleio/apns2"
+	"github.com/nanoscaleio/apns2/certificate"
 	"github.com/stretchr/testify/assert"
 )
 
