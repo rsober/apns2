@@ -1,0 +1,156 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1",
+    "title": "Jabil IoT Test",
+    "x-lastModified": "Feb 23, 2018 12:02PM PST"
+  },
+  "paths": {
+    "/oven": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "$ref": "#/definitions/GetOvenSchema"
+            }
+          }
+        },
+        "parameters": [],
+        "operationId": "getOven",
+        "description": "This gets the list of ovens",
+        "summary": "This gets the list of ovens"
+      },
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "schema": {
+              "$ref": "#/definitions/GetOvenSchema"
+            },
+            "examples": {
+              "application/json": {
+                "mode": 1,
+                "state": 3,
+                "temp": 350,
+                "event": "ovenControl",
+                "timer": 0,
+                "id": "5a906fce587b820400e091b0",
+                "is_read": false,
+                "serial_number": "MATT"
+              }
+            }
+          },
+          "404": {
+            "description": "Bad response",
+            "schema": {
+              "$ref": "#/definitions/GiveNewSchemaNameHere"
+            },
+            "examples": {
+              "application/json": {
+                "error": "1111",
+                "message": "invalid oven"
+              }
+            }
+          },
+          "500": {
+            "description": "Server is down"
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/OvenStatus"
+            }
+          }
+        ],
+        "operationId": "postOven",
+        "consumes": [
+          "application/json"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "GiveNewSchemaNameHere": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "default": "1111"
+        },
+        "message": {
+          "type": "string",
+          "default": "invalid oven"
+        }
+      }
+    },
+    "OvenStatus": {
+      "mode": 1,
+      "serial_number": "MATT",
+      "state": 3,
+      "is_read": "false",
+      "temp": 350,
+      "event": "ovenControl"
+    },
+    "ReturnOven": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "default": "1111"
+        },
+        "message": {
+          "type": "string",
+          "default": "invalid oven"
+        }
+      }
+    },
+    "GetOvenSchema": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "type": "integer",
+          "default": 1
+        },
+        "state": {
+          "type": "integer",
+          "default": 3
+        },
+        "temp": {
+          "type": "integer",
+          "default": 350
+        },
+        "event": {
+          "type": "string",
+          "default": "ovenControl"
+        },
+        "timer": {
+          "type": "integer",
+          "default": 0
+        },
+        "id": {
+          "type": "string",
+          "default": "5a906fce587b820400e091b0"
+        },
+        "is_read": {
+          "type": "boolean",
+          "default": false
+        },
+        "serial_number": {
+          "type": "string",
+          "default": "MATT"
+        }
+      }
+    }
+  }
+}
